@@ -1,2 +1,2 @@
 # MEAN-GS
-MongoDB Express.js Angular Node.js - GraphQL Socket.io
+**M**ongoDB **E**xpress.js **A**ngular **N**ode.js - **G**raphQL **S**ocket.io
