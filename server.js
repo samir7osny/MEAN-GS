@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config()
 
 // Get our API routes
-const api = require('./server/routes/api').default;
+const api = require('./server/routes/api');
 
 // Get the database connector
 const db = require('./server/db');
