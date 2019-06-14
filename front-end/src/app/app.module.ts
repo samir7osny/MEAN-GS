@@ -10,7 +10,7 @@ import { ApolloModule } from "apollo-angular";
 import { HttpLinkModule } from "apollo-angular-link-http";
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
-const config: SocketIoConfig = { url: 'http://localhost:5555', options: {} };
+const config: SocketIoConfig = { url: process.env.APP_URL, options: {} };
 
 @NgModule({
   declarations: [

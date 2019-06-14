@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "TryAngular": {
+    "MEAN-GS": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/TryAngular",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -61,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "TryAngular:build"
+            "browserTarget": "MEAN-GS:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "TryAngular:build:production"
+              "browserTarget": "MEAN-GS:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "TryAngular:build"
+            "browserTarget": "MEAN-GS:build"
           }
         },
         "test": {
@@ -109,15 +109,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "TryAngular:serve"
+            "devServerTarget": "MEAN-GS:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "TryAngular:serve:production"
+              "devServerTarget": "MEAN-GS:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "TryAngular"
+  "defaultProject": "MEAN-GS"
 }

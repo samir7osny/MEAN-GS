@@ -10,7 +10,7 @@ import { Socket } from 'ngx-socket-io';
 })
 
 export class AppComponent {
-  title = 'TryAngular';
+  title = 'MEAN-GS';
   rates: any[];
   loading = true;
   error: any;
@@ -29,7 +29,7 @@ export class AppComponent {
         `,
       })
       .valueChanges.subscribe(result => {
-        console.log(result.data['users'][0].username);
+        console.log(result.data['users']);
       });
   }
 
