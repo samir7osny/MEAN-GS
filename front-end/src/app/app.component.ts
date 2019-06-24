@@ -1,21 +1,17 @@
 import { Component } from '@angular/core';
-import {Apollo} from 'apollo-angular';
+import { Apollo } from 'apollo-angular';
 import gql from "graphql-tag";
 import { Socket } from 'ngx-socket-io';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+  styleUrls: ['./app.component.scss']
 })
-
 export class AppComponent {
   title = 'MEAN-GS';
-  rates: any[];
-  loading = true;
-  error: any;
 
-  constructor(private apollo: Apollo, private socket: Socket) {}
+  constructor(private apollo: Apollo, private socket: Socket) { }
 
   ngOnInit() {
     this.apollo
@@ -23,7 +19,7 @@ export class AppComponent {
         query: gql`
           {
             users {
-              username
+              Username
             }
           }
         `,
@@ -32,5 +28,4 @@ export class AppComponent {
         console.log(result.data['users']);
       });
   }
-
 }

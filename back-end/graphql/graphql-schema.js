@@ -1,26 +1,39 @@
 const User = require('../data/user.data');
 const { GraphQLSchema, GraphQLObjectType, GraphQLList, GraphQLString } = require('graphql');
 
-const usertype = new GraphQLObjectType({
+const UserType = new GraphQLObjectType({
   name: 'User',
   fields: {
-    username: {
+    Username: {
       type: GraphQLString
     },
-    password: {
+    Password: {
       type: GraphQLString
     },
-    name: {
+    Token: {
       type: GraphQLString
+    },
+    Name: {
+      type: new GraphQLObjectType({
+        name: 'name',
+        fields: {
+          FirstName: {
+            type: GraphQLString
+          },
+          LastName: {
+            type: GraphQLString
+          }
+        }
+      })
     }
   }
 })
 
-const queryType = new GraphQLObjectType({
+const QueryType = new GraphQLObjectType({
   name: 'Query',
   fields: {
     users: {
-      type: new GraphQLList(usertype),
+      type: new GraphQLList(UserType),
       resolve: (_, args) => {
         return User.getAllUser();
       }
@@ -28,8 +41,42 @@ const queryType = new GraphQLObjectType({
   }
 });
 
-const schema = new GraphQLSchema({
-  query: queryType
+const MutationType = new GraphQLObjectType({
+  name: 'Mutation',
+  fields: {
+    addUser: {
+      type: UserType,
+      args: {
+        Username: {
+          type: GraphQLString
+        },
+        Password: {
+          type: GraphQLString
+        },
+        FirstName: {
+          type: GraphQLString
+        },
+        LastName: {
+          type: GraphQLString
+        },
+      },
+      resolve(parent, args){
+        return User.addUser({
+          Username: args.Username,
+          Password: args.Password,
+          Name: {
+            FirstName: args.FirstName,
+            LastName: args.LastName
+          }
+        });
+      }
+    }
+  }
 });
 
-exports.schema = schema;
+const Schema = new GraphQLSchema({
+  query: QueryType,
+  mutation: MutationType
+});
+
+exports.schema = Schema;
